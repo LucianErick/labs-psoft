@@ -1,0 +1,13 @@
+1º - O primeiro problema que encontrei foi na classe Compra, na qual tem um atributo do tipo int denominado "diasAnuncio". Ele não deveria estar nessa classe, e sim em Anuncio.
+2º Na classe Compra, não tem nenhum atributo que seja, realmente, significativo em nível de aplicação para identificação da Compra. Caso haja necessidade de evoluir o sistema, com certeza haveria problemas.
+3º Na classe Cliente, não tem nenhum atributo que seja, realmente, significativo em nível de aplicação para identificação do Cliente. Caso haja necessidade de evoluir o sistema, com certeza haveria problemas.
+4º Na classe Cliente, o nome do parâmetro da função addCompra não é significativo.
+5º Na classe Anuncio, codigoPreco não tem um nome muito claro, dificultado o entendimento.
+6º No método Cliente, o método historico é atribuido para muitas responsabilidades, ficando difícil entender o funcionamento.
+- SOLUÇÃO: 
+    criar novos atributos: valorTotal e pontosFrequentes
+    dividir as responsabilidades do método historico em mais três:
+        calcularValorParcial(), calcularValorTotal(), gerarSaidaResultado()
+    switch case extremamente confuso.
+- RESULTADO: 
+    método historico muito menos confuso e com menos responsabilidades atribuídas a ele.
