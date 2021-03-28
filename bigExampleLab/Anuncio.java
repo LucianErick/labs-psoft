@@ -16,7 +16,6 @@ public class Anuncio {
 		this.codigoTipoAnuncio = codigoTipoAnuncio;
 		this.quantidadeDias = quantidadeDias;
 	}
-
 	public int getCodigoTipoAnuncio() {
 		return codigoTipoAnuncio;
 	}
@@ -32,14 +31,10 @@ public class Anuncio {
 	public void setquantidadeDias(int quantidadeDias) {
 		this.quantidadeDias = quantidadeDias;
 	}
-
 	public String getCodigoAnuncio() {
 		return codigoAnuncio;
 	}
-
 	public void setCodigoAnuncio(String codigoAnuncio) {
 		this.codigoAnuncio = codigoAnuncio;
-	}
-
-	
+	}	
 }

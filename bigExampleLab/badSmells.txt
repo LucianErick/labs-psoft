@@ -11,3 +11,4 @@
     switch case extremamente confuso.
 - RESULTADO: 
     método historico muito menos confuso e com menos responsabilidades atribuídas a ele.
+    

@@ -2,8 +2,6 @@ package bigExampleLab;
 
 import java.util.Enumeration;
 import java.util.Vector;
-
-
 class Cliente {
 	private String cpf;
 	private String nome;
