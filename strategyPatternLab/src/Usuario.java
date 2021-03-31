@@ -1,16 +1,19 @@
 package src;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Usuario {
     private String cpf;
     private String nome;
-    private Localizacao localizacao;
     private String telefone;
+    private Map<String, Localizacao> locaisSalvos;
 
-    public Usuario(String cpf, String nome, Localizacao localizacao, String telefone) {
+    public Usuario(String cpf, String nome, String telefone) {
         this.cpf = cpf;
         this.nome = nome;
-        this.localizacao = localizacao;
         this.telefone = telefone;
+        this.locaisSalvos = new HashMap<String, Localizacao>();
     }
 
     public String getCpf() {
@@ -29,20 +32,40 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public Localizacao getLocalizacao() {
-        return localizacao;
-    }
-
-    public void setLocalizacao(Localizacao localizacao) {
-        this.localizacao = localizacao;
-    }
-
     public String getTelefone() {
         return telefone;
     }
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Map<String, Localizacao> getLocaisSalvos() {
+        return locaisSalvos;
+    }
+
+    public void setLocaisSalvos(Map<String, Localizacao> locaisSalvos) {
+        this.locaisSalvos = locaisSalvos;
+    }
+
+    public String salvarLocal(String nome, String coordenadaLat, String coordenadaLong) {
+        if (!this.getLocaisSalvos().containsKey(nome.toUpperCase())) {
+            this.locaisSalvos.put(nome.toUpperCase(), new Localizacao(nome, coordenadaLat, coordenadaLong));
+            return "Local cadastrado com sucesso!";
+        }
+        return "Nome de local já existente. Não foi possível cadastrar.";
+    }
+
+    public String exibirLocaisSalvos() {
+        String saida = "";
+        if (this.getLocaisSalvos().size() != 0) {
+            for (Localizacao localizacao : this.getLocaisSalvos().values()) {
+                saida += localizacao.toString() + "\n";
+            }
+        } else {
+            saida = "Sem locais salvos.";
+        }
+    return saida;
     }
 
     @Override
@@ -72,7 +95,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario [cpf=" + cpf + ", localizacao=" + localizacao + ", nome=" + nome + ", telefone=" + telefone
+        return "Usuario [cpf=" + cpf + ", nome=" + nome + ", telefone=" + telefone
                 + "]";
     }
 }

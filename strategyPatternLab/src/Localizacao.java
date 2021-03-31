@@ -1,14 +1,17 @@
 package src;
 
 public class Localizacao {
+
+    private String nomeLocal;
     private String coordenadaLatitude;
     private String coordenadaLongitude;
     
-    public Localizacao(String coordenadaLatitude, String coordenadaLongitude) {
+    public Localizacao(String nomeLocal, String coordenadaLatitude, String coordenadaLongitude) {
+        this.nomeLocal = nomeLocal;
         this.coordenadaLatitude = coordenadaLatitude;
         this.coordenadaLongitude = coordenadaLongitude;
     }
-
+    
     public String getCoordenadaLatitude() {
         return coordenadaLatitude;
     }
@@ -20,11 +23,19 @@ public class Localizacao {
     public String getCoordenadaLongitude() {
         return coordenadaLongitude;
     }
-
+    
     public void setCoordenadaLongitude(String coordenadaLongitude) {
         this.coordenadaLongitude = coordenadaLongitude;
     }
+    
+    public String getNomeLocal() {
+        return nomeLocal;
+    }
 
+    public void setNomeLocal(String nomeLocal) {
+        this.nomeLocal = nomeLocal;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -58,6 +69,6 @@ public class Localizacao {
 
     @Override
     public String toString() {
-        return String.format("%s,%s", this.getCoordenadaLatitude(), this.coordenadaLongitude);
+        return String.format("%s - %s,%s", this.getNomeLocal(),this.getCoordenadaLatitude(), this.coordenadaLongitude);
     }
 }

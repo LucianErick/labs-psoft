@@ -7,25 +7,28 @@ import src.strategy.NavegacaoPedestre;
 
 public class Navegacao {
     
-    private String cpfUsuario;
     private EstrategiaNavegacao navegacao;
     private Localizacao localizacaoInicial;
     private Localizacao localizacaoFinal;
     
-    public Navegacao(String cpfUsuario, Localizacao localizacaoInicial,
-            Localizacao localizacaoFinal) {
-        this.cpfUsuario = cpfUsuario;
-        this.navegacao = new NavegacaoPedestre();
+    public Navegacao(Localizacao localizacaoInicial,
+            Localizacao localizacaoFinal, String estrategiaNavegacao) {
+        mudarEstrategiaNavegacao(estrategiaNavegacao);
         this.localizacaoInicial = localizacaoInicial;
         this.localizacaoFinal = localizacaoFinal;
     }
+
+    public Navegacao(Localizacao localizacaoInicial, Localizacao localizacaoFinal) {
+        this.localizacaoInicial = localizacaoInicial;
+        this.localizacaoFinal = localizacaoFinal;
+    }    
 
     public void mudarEstrategiaNavegacao(String estrategiaNavegacaoString) {
         switch (estrategiaNavegacaoString.toUpperCase()) {
             case "PEDESTRE":
                 this.navegacao = new NavegacaoPedestre();
                 break;
-            case "ONIBUS":
+            case ("ONIBUS"):
                 this.navegacao = new NavegacaoOnibus();
                 break;
             case "CARRO":
@@ -39,14 +42,6 @@ public class Navegacao {
 
     public void calcular() {
         this.navegacao.calcularRota(this.getLocalizacaoInicial().toString(), this.getLocalizacaoFinal().toString());
-    }
-
-    public String getCpfUsuario() {
-        return cpfUsuario;
-    }
-
-    public void setCpfUsuario(String cpfUsuario) {
-        this.cpfUsuario = cpfUsuario;
     }
 
     public EstrategiaNavegacao getNavegacao() {
