@@ -14,9 +14,9 @@ public class TomouPrimeiraDose extends Situacao {
         String retorno = "";
         if (Util.calcularQuantidadeDeDiasEntreDatas(dataPrimeiraDose, dataVerificacao) >= 20) {
             usuario.setSituacao(new HabilitadaSegundaDose(usuario));
-            retorno = "Usuário HABILITADO para tomar a segunda dose.";
+            retorno = Util.HABILITADO_SEGUNDA_DOSE;
         } else {
-            retorno = "Usuário INABILITADO para tomar a segunda dose.";
+            retorno = Util.NAO_HABILITADO_SEGUNDA_DOSE;
         }
         return retorno;
     }
@@ -25,22 +25,16 @@ public class TomouPrimeiraDose extends Situacao {
     @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
     throws ParseException {
-        return "Usuário já habilitado para primeira dose.";
+        return Util.JA_HABILITADO_PRIMEIRA_DOSE;
     }
     
     @Override
     public String tomarPrimeiraDose(String dataDose) {
-        return "Usuário já tomou a primeira dose.";
+        return Util.JA_TOMOU_PRIMEIRA_DOSE;
     }
 
     @Override
     public String tomarSegundaDose() {
-        return "Usuário inabilitado para segunda dose";
+        return Util.NAO_HABILITADO_SEGUNDA_DOSE;
     }
-    
-    @Override
-    public String toString() {
-        return "O usuário foi VACINADO com a PRIMEIRA DOSE.";
-    }
-
 }

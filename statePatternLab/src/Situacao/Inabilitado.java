@@ -9,7 +9,7 @@ import src.Util.Util;
 
 public class Inabilitado extends Situacao {
 
-    Inabilitado(Usuario usuario) {
+    public Inabilitado(Usuario usuario) {
         super(usuario);
     }
 

@@ -1,5 +1,6 @@
 package src.Classes;
 
+import src.Situacao.Inabilitado;
 import src.Situacao.Situacao;
 import src.Util.Util;
 
@@ -32,6 +33,7 @@ public class Usuario {
         this.telefone = telefone;
         this.profissao = profissao;
         this.comorbidades = mapComorbidades(comorbidades);
+        this.situacao = new Inabilitado(this);
     }
 
     public Integer getIdadeUsuario() throws ParseException {

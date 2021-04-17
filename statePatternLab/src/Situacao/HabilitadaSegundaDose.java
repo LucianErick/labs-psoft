@@ -3,6 +3,7 @@ package src.Situacao;
 import java.text.ParseException;
 
 import src.Classes.Usuario;
+import src.Util.Util;
 
 public class HabilitadaSegundaDose extends Situacao{
 
@@ -13,17 +14,17 @@ public class HabilitadaSegundaDose extends Situacao{
     @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
             throws ParseException {
-        return "Usuário já habilitado para primeira dose";
+        return Util.JA_HABILITADO_PRIMEIRA_DOSE;
     }
 
     @Override
     public String tomarPrimeiraDose(String dataDose) {
-        return "Usuário já tomou a primeira dose";
+        return Util.JA_TOMOU_PRIMEIRA_DOSE;
     }
 
     @Override
     public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        return "Usuário já habilitado para segunda dose.";
+        return Util.JA_HABILITADO_SEGUNDA_DOSE;
     }
 
     @Override

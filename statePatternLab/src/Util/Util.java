@@ -11,7 +11,11 @@ import java.util.concurrent.TimeUnit;
 public class Util {
 
     public static final String JA_HABILITADO_PRIMEIRA_DOSE = "Usuário já habilitado para primeira dose.";
+    public static final String JA_HABILITADO_SEGUNDA_DOSE = "Usuário já habilitado para segunda dose.";
+    public static final String JA_TOMOU_PRIMEIRA_DOSE = "Usuário já tomou a primeira dose.";
+    public static final String JA_TOMOU_SEGUNDA_DOSE = "Usuário já tomou a segunda dose.";
     public static final String NAO_HABILITADO_SEGUNDA_DOSE = "Usuário inabilitado para segunda dose.";
+    public static final String HABILITADO_SEGUNDA_DOSE = "Usuário habilitado para segunda dose.";
 
     public static List<String> mapStringParaLista(String stringQualquer) {
         List<String> listaString = new ArrayList<String>();
@@ -54,4 +58,7 @@ public class Util {
         return dias;
     }
 
+    public static boolean anularEntradaVazia(String entrada) {
+        return entrada.replaceAll(" ", "").equals("");
+    }
 }

@@ -12,8 +12,8 @@ public class Vacinacao {
     public Vacinacao(int codigo, Integer idade, String profissao, String comorbidade) {
         this.codigoVacinacao = String.format("VAC-%d", codigo);
         this.idadeMinima = idade;
-        this.profissao = Util.mapStringParaLista(profissao);
-        this.comorbidade = Util.mapStringParaLista(comorbidade);
+        this.profissao = Util.anularEntradaVazia(profissao) ? null : Util.mapStringParaLista(profissao);
+        this.comorbidade = Util.anularEntradaVazia(comorbidade) ? null : Util.mapStringParaLista(comorbidade);
     }
 
     public String getCodigoVacinacao() {
@@ -71,5 +71,10 @@ public class Vacinacao {
         } else if (!codigoVacinacao.equals(other.codigoVacinacao))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("id: s% - idade: %s - profissões: [%s] - comorbidades: [%s]", this.codigoVacinacao, this.idadeMinima, this.getProfissao().toString(), this.getComorbidade().toString());
     }    
 }

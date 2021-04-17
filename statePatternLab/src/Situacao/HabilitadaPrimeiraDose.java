@@ -24,12 +24,12 @@ public class HabilitadaPrimeiraDose extends Situacao{
     
     @Override
     public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        return "Usuário inabilitado para segunda dose.";
+        return Util.NAO_HABILITADO_SEGUNDA_DOSE;
     }
     
     @Override
     public String tomarSegundaDose() {
-        return "Usuário inabilitado para segunda dose.";
+        return Util.NAO_HABILITADO_SEGUNDA_DOSE;
     }
 
     @Override

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import src.Classes.Vacinacao;
+import src.Util.Util;
 
 public class ControleVacinacao {
     private Map<String,Vacinacao> historicoVacinacao;
@@ -22,7 +23,29 @@ public class ControleVacinacao {
         }
     }
 
+    public void alterarRequisitos(String codigo, Integer idade, String profissoes, String comorbidades) {
+        if (this.getHistoricoVacinacao().containsKey(codigo.toUpperCase())) {
+            if (idade != null) {
+                this.getHistoricoVacinacao().get(codigo.toUpperCase()).setIdadeMinima(idade);
+            }
+            if (!Util.anularEntradaVazia(profissoes)) {
+                this.getHistoricoVacinacao().get(codigo.toUpperCase()).setProfissao(Util.mapStringParaLista(profissoes));
+            }
+            if (!Util.anularEntradaVazia(comorbidades)) {
+                this.getHistoricoVacinacao().get(codigo.toUpperCase()).setComorbidade(Util.mapStringParaLista(comorbidades));
+            }
+        }
+    }
+
     public Map<String, Vacinacao> getHistoricoVacinacao() {
         return historicoVacinacao;
+    }
+
+    public String listarVacinas() {
+        String saida = "";
+        for (Vacinacao vacinacao : this.getHistoricoVacinacao().values()) {
+            saida += vacinacao.toString();
+        }
+        return saida;
     }
 }
