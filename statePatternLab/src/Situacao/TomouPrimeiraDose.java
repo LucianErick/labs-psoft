@@ -20,28 +20,27 @@ public class TomouPrimeiraDose extends Situacao {
         }
         return retorno;
     }
-
+    
+    
     @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
     throws ParseException {
-        // TODO Auto-generated method stub
-        return null;
+        return "Usuário já habilitado para primeira dose.";
     }
     
     @Override
     public String tomarPrimeiraDose(String dataDose) {
-        // TODO Auto-generated method stub
-        return null;
+        return "Usuário já tomou a primeira dose.";
     }
 
+    @Override
+    public String tomarSegundaDose() {
+        return "Usuário inabilitado para segunda dose";
+    }
+    
     @Override
     public String toString() {
         return "O usuário foi VACINADO com a PRIMEIRA DOSE.";
     }
 
-    @Override
-    public String tomarSegundaDose() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }

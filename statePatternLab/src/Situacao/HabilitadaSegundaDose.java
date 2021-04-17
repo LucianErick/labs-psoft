@@ -13,26 +13,23 @@ public class HabilitadaSegundaDose extends Situacao{
     @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
             throws ParseException {
-        // TODO Auto-generated method stub
-        return null;
+        return "Usuário já habilitado para primeira dose";
     }
 
     @Override
     public String tomarPrimeiraDose(String dataDose) {
-        // TODO Auto-generated method stub
-        return null;
+        return "Usuário já tomou a primeira dose";
     }
 
     @Override
     public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        // TODO Auto-generated method stub
-        return null;
+        return "Usuário já habilitado para segunda dose.";
     }
 
     @Override
     public String tomarSegundaDose() {
-        // TODO Auto-generated method stub
-        return null;
+        usuario.setSituacao(new Finalizada(usuario));
+        return "Usuário tomou a segunda dose da vacina.";
     }
     
 }

@@ -2,7 +2,6 @@ package src.Util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,6 +9,10 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Util {
+
+    public static final String JA_HABILITADO_PRIMEIRA_DOSE = "Usuário já habilitado para primeira dose.";
+    public static final String NAO_HABILITADO_SEGUNDA_DOSE = "Usuário inabilitado para segunda dose.";
+
     public static List<String> mapStringParaLista(String stringQualquer) {
         List<String> listaString = new ArrayList<String>();
         for (String string : stringQualquer.replaceAll(" ", "").split(",")) {

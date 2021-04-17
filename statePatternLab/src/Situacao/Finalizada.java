@@ -13,30 +13,26 @@ public class Finalizada extends Situacao {
     @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
             throws ParseException {
-        // TODO Auto-generated method stub
-        return null;
+        return this.toString();
     }
 
     @Override
     public String tomarPrimeiraDose(String dataDose) {
-        // TODO Auto-generated method stub
-        return null;
+        return this.toString();
     }
 
     @Override
     public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return "Processo de vacinação CONCLUÍDO para o usuário.";
+        return this.toString();
     }
 
     @Override
     public String tomarSegundaDose() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Usuário finalizou o processo de vacinação.";
     }
 }

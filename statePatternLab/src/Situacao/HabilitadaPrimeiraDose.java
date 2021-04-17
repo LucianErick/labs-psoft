@@ -3,6 +3,7 @@ package src.Situacao;
 import java.text.ParseException;
 
 import src.Classes.Usuario;
+import src.Util.Util;
 
 public class HabilitadaPrimeiraDose extends Situacao{
     HabilitadaPrimeiraDose(Usuario usuario) {
@@ -16,26 +17,23 @@ public class HabilitadaPrimeiraDose extends Situacao{
     }
 
     @Override
-    public String toString() {
-        return "Usuário encontra-se HABILITADO para PRIMEIRA DOSE.";
-    }
-
-    @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
-            throws ParseException {
-        // TODO Auto-generated method stub
-        return null;
+    throws ParseException {
+        return Util.JA_HABILITADO_PRIMEIRA_DOSE;
     }
-
+    
     @Override
     public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        // TODO Auto-generated method stub
-        return null;
+        return "Usuário inabilitado para segunda dose.";
+    }
+    
+    @Override
+    public String tomarSegundaDose() {
+        return "Usuário inabilitado para segunda dose.";
     }
 
     @Override
-    public String tomarSegundaDose() {
-        // TODO Auto-generated method stub
-        return null;
+    public String toString() {
+        return "Usuário encontra-se HABILITADO para PRIMEIRA DOSE.";
     }
 }

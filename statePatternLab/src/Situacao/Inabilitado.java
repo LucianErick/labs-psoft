@@ -30,27 +30,23 @@ public class Inabilitado extends Situacao {
         }
     }
 
+    @Override
+    public String tomarPrimeiraDose(String dataDose) {
+        return this.toString();
+    }
+    
+    @Override
+    public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
+        return this.toString();
+    }
+    
+    @Override
+    public String tomarSegundaDose() {
+        return this.toString();
+    }
+
     public String toString() {
         return "O usuário se encontra INABILITADO para receber a vacina.";
     }
 
-    @Override
-    public String tomarPrimeiraDose(String dataDose) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String tomarSegundaDose() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-   
 }
