@@ -1,16 +1,25 @@
+package src.Classes;
+
 import java.util.Scanner;
+
+import src.Controladores.ControleGeral;
+import src.Controladores.ControleUsuario;
+import src.Controladores.ControleVacinacao;
 
 public class Menu {
     public static void main(String[] args) {
         exibirMenu();
     }
 
-
     public static void exibirMenu() {
-        ControleUsuario controleUsuario = new ControleUsuario();
+        ControleGeral controleGeral = new ControleGeral();
+        
+        ControleUsuario controleUsuario = controleGeral.getControleUsuario();
+        ControleVacinacao controleVacinacao = controleGeral.getControleVacinacao();
 
         Scanner input = new Scanner(System.in);
         String menuInterativo = "\n(C)adastrar usuário\n"
+                + "(L)istar usuários\n"
                 + "(E)xibir dados usuário\n"
                 + "(A)lterar dados usuário\n"
                 + "(S)air\n"
@@ -31,6 +40,9 @@ public class Menu {
                     System.out.print("\nDigite o cpf: ");
                     String cpf = input.nextLine();
 
+                    System.out.print("\nDigite a data de nascimento: ");
+                    String dataNascimento = input.nextLine();
+
                     System.out.print("\nDigite o telefone: ");
                     String telefone = input.nextLine();
 
@@ -49,11 +61,11 @@ public class Menu {
                     System.out.print("\nDigite as comorbidades (separadas por vírgula): ");
                     String comorbidades = input.nextLine();
 
-                    controleUsuario.cadastroUsuario(nome, cpf, endereco, numeroCartaoSus, email, telefone, profissao, comorbidades);
+                    controleUsuario.cadastroUsuario(nome, cpf, dataNascimento, endereco, numeroCartaoSus, email, telefone, profissao, comorbidades);
                     break;
 
                 case "E": // exibir dados usuario
-                    System.out.print("Digite o cpf: ");
+                    System.out.println("Digite o cpf: ");
                     String cpfUsuario = input.nextLine();
                     System.out.println(controleUsuario.exibirDadosUsuario(cpfUsuario));
                     break;
@@ -73,7 +85,9 @@ public class Menu {
                     controleUsuario.alterarCadastroUsuario(cpfUsuarioAlterar, tipoDado, novoDado);
                     break;
 
-                case "L": //Listar possíveis situações
+                case "L": //Listar Usuários
+                    System.out.println(controleUsuario.listarUsuarios());
+                    break;
 
                 case "S":
                 default:

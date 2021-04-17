@@ -1,3 +1,6 @@
+package src.Controladores;
+import src.Classes.Usuario;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,12 +15,12 @@ public class ControleUsuario {
         return usuarios;
     }
 
-    public void cadastroUsuario(String nome, String cpf, String endereco, String numeroCartaoSus, String email,
+    public void cadastroUsuario(String nome, String cpf, String dataNascimento, String endereco, String numeroCartaoSus, String email,
             String telefone, String profissao, String comorbidades) {
         if (cpf == null || cpf.length() != 11 || cpf.trim().isEmpty()) {
             System.out.println("Cadastro não realizado. Alguma informação está inválida.");
         } else {
-            Usuario novoUsuario = new Usuario(nome, cpf, endereco, numeroCartaoSus, email, telefone, profissao,
+            Usuario novoUsuario = new Usuario(nome, cpf, dataNascimento, endereco, numeroCartaoSus, email, telefone, profissao,
                     comorbidades);
             this.getUsuarios().put(cpf, novoUsuario);
             System.out.println("Usuário cadastrado com sucesso.");
@@ -25,7 +28,7 @@ public class ControleUsuario {
     }
 
     public String exibicaoMudancaDadosUsuario() {
-        return "Nome - A, E-mail - B, Endereço - C, Nº Cartão SUS - D, Profissão - E, F - Telefone, H - Comorbidades";
+        return "Nome - A, E-mail - B, Endereço - C, Nº Cartão SUS - D, Profissão - E, F - Telefone, G - Comorbidades, H - Data de Nascimento";
     }
 
     public void alterarCadastroUsuario(String cpfUsuario, String nomeDado, String novoDado) {
@@ -44,5 +47,13 @@ public class ControleUsuario {
         } else {
             return this.getUsuarios().get(cpf).toString();
         }
+    }
+
+    public String listarUsuarios() {
+        String saida = "";
+        for (Usuario usuario : this.getUsuarios().values()) {
+            saida += String.format("%s - %s - %s\n", usuario.getCpf(), usuario.getNome(), usuario.getNumeroCartaoSus());
+        }
+        return saida;
     }
 }

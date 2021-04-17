@@ -1,27 +1,42 @@
+package src.Classes;
+
+import src.Situacao.Situacao;
+import src.Util.Util;
+
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Usuario {
 
     private String nome; 
     private String cpf;
+    private String dataNascimento;
     private String endereco;
     private String numeroCartaoSus;
     private String email;
     private String telefone;
     private String profissao;
     private List<String> comorbidades;
+    private Situacao situacao;
     
-    public Usuario(String nome, String cpf, String endereco, String numeroCartaoSus, String email, String telefone,
+    public Usuario(String nome, String cpf, String dataNascimento, String endereco, String numeroCartaoSus, String email, String telefone,
             String profissao, String comorbidades) {
         this.nome = nome;
         this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.numeroCartaoSus = numeroCartaoSus;
         this.email = email;
         this.telefone = telefone;
         this.profissao = profissao;
         this.comorbidades = mapComorbidades(comorbidades);
+    }
+
+    public Integer getIdadeUsuario() throws ParseException {
+        Date data = Util.mapStringParaDate(this.dataNascimento);
+        return Util.calcularIdade(data);
     }
 
     public String getNome() {
@@ -87,18 +102,25 @@ public class Usuario {
         }
         return listaComorbidades;
     }
-
+    
     public String getComorbidades() {
-        String saida = "[";
+        String saida = "";
         for (String string : this.comorbidades) {
             saida += string + " ";
         }
-        saida += "]";
         return saida;
     }
     
     public void setComorbidades(List<String> comorbidades) {
         this.comorbidades = comorbidades;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public void alterarDado(String dado, String novoDado) {
@@ -121,14 +143,16 @@ public class Usuario {
             case "F":
                 this.setTelefone(novoDado);
                 break;
-            case "H":
+            case "G":
                 this.setComorbidades(this.mapComorbidades(novoDado));
                 break;
+            case "H":
+                this.setDataNascimento(novoDado);
             default:
                 System.out.println("Opção inválida.");
         }
     }
-
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -156,6 +180,14 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return String.format("Nome: %s - CPF: %s - Telefone: %s - Endereço: %s - Email: %s - Número do Cartão do SUS: %s - Profissão: %s - Comorbidades: %s", this.nome, this.cpf, this.telefone, this.endereco, this.email, this.numeroCartaoSus, this.profissao, this.getComorbidades());
+        return String.format("Nome: %s - CPF: %s - Telefone: %s - Endereço: %s - Email: %s - Número do Cartão do SUS: %s - Profissão: %s - Comorbidades: [%s]", this.nome, this.cpf, this.telefone, this.endereco, this.email, this.numeroCartaoSus, this.profissao, this.getComorbidades());
+    }
+
+    public Situacao getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Situacao situacao) {
+        this.situacao = situacao;
     }
 }
