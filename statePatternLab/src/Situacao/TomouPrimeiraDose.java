@@ -10,9 +10,9 @@ public class TomouPrimeiraDose extends Situacao {
     }
 
     @Override
-    public String habilitarSegundaDose(String dataPrimeiraDose, String dataVerificacao) {
+    public String habilitarSegundaDose(String dataVerificacao) {
         String retorno = "";
-        if (Util.calcularQuantidadeDeDiasEntreDatas(dataPrimeiraDose, dataVerificacao) >= 20) {
+        if (Util.calcularQuantidadeDeDiasEntreDatas(usuario.getDataPrimeiraDose(), dataVerificacao) >= 20) {
             usuario.setSituacao(new HabilitadaSegundaDose(usuario));
             retorno = Util.HABILITADO_SEGUNDA_DOSE;
         } else {
@@ -20,8 +20,7 @@ public class TomouPrimeiraDose extends Situacao {
         }
         return retorno;
     }
-    
-    
+
     @Override
     public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade)
     throws ParseException {
@@ -36,5 +35,10 @@ public class TomouPrimeiraDose extends Situacao {
     @Override
     public String tomarSegundaDose() {
         return Util.NAO_HABILITADO_SEGUNDA_DOSE;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuário tomou a primeira dose.";
     }
 }

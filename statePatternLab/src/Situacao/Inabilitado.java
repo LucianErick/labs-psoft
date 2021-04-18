@@ -20,7 +20,7 @@ public class Inabilitado extends Situacao {
         boolean comorbidadeCorreta = false;
         if ((usuario.getIdadeUsuario() != null && idadeMinima == null) || ((usuario.getIdadeUsuario() != null && idadeMinima != null) && (usuario.getIdadeUsuario() >= idadeMinima))) { idadeCorreta = true; }
         if ((usuario.getProfissao() != null && profissao == null) || ((usuario.getProfissao() != null && profissao != null) && (Util.mapStringParaLista(profissao)).contains(usuario.getProfissao()))) { profissaoCorreta = true;}
-        if ((usuario.getComorbidades() != null && comorbidade == null) || ((usuario.getComorbidades() != null && comorbidade != null) && (Util.mapStringParaLista(comorbidade)).contains(usuario.getComorbidades()))) { comorbidadeCorreta = true; }
+        if ((usuario.getComorbidade() != null && comorbidade == null) || ((usuario.getComorbidade() != null && comorbidade != null) && (Util.mapStringParaLista(comorbidade)).contains(usuario.getComorbidade()))) { comorbidadeCorreta = true; }
 
         if (idadeCorreta && profissaoCorreta && comorbidadeCorreta) {
             usuario.setSituacao(new HabilitadaPrimeiraDose(usuario));
@@ -36,7 +36,7 @@ public class Inabilitado extends Situacao {
     }
     
     @Override
-    public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
+    public String habilitarSegundaDose(String dataSegundaDose) {
         return this.toString();
     }
     

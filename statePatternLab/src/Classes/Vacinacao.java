@@ -48,6 +48,28 @@ public class Vacinacao {
         this.comorbidade = comorbidade;
     }
 
+    public String mapProfissoesParaString() {
+        String saida = "";
+        for (String string : this.getProfissao()) {
+            saida += string.toString() + ",";
+        }
+        if (saida.length() != 0) {
+            saida = saida.substring(0, saida.length() - 1);
+        }
+        return saida;
+    }
+
+    public String mapComorbidadesParaString() {
+        String saida = "";
+        for (String string : this.getComorbidade()) {
+            saida += string.toString() + ",";
+        }
+        if (saida.length() != 0) {
+            saida = saida.substring(0, saida.length() - 1);
+        }
+        return saida;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -75,6 +97,6 @@ public class Vacinacao {
 
     @Override
     public String toString() {
-        return String.format("id: s% - idade: %s - profissões: [%s] - comorbidades: [%s]", this.codigoVacinacao, this.idadeMinima, this.getProfissao().toString(), this.getComorbidade().toString());
+        return String.format("id: %s - idade: %s - profissões: %s - comorbidades: %s\n", this.codigoVacinacao, this.idadeMinima, this.getProfissao().toString(), this.getComorbidade().toString());
     }    
 }

@@ -13,6 +13,7 @@ public class HabilitadaPrimeiraDose extends Situacao{
     @Override
     public String tomarPrimeiraDose(String dataDose) {
         usuario.setSituacao(new TomouPrimeiraDose(usuario));
+        usuario.setDataPrimeiraDose(dataDose);
         return String.format("Foi aplicada a primeira dose de Vacina no dia %s", dataDose);
     }
 
@@ -23,8 +24,8 @@ public class HabilitadaPrimeiraDose extends Situacao{
     }
     
     @Override
-    public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
-        return Util.NAO_HABILITADO_SEGUNDA_DOSE;
+    public String habilitarSegundaDose(String dataSegundaDose) {
+        return Util.JA_HABILITADO_SEGUNDA_DOSE;
     }
     
     @Override

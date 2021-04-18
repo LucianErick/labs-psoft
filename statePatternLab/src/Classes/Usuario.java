@@ -19,8 +19,9 @@ public class Usuario {
     private String email;
     private String telefone;
     private String profissao;
-    private List<String> comorbidades;
+    private String comorbidade;
     private Situacao situacao;
+    private String dataPrimeiraDose;
     
     public Usuario(String nome, String cpf, String dataNascimento, String endereco, String numeroCartaoSus, String email, String telefone,
             String profissao, String comorbidades) {
@@ -32,8 +33,9 @@ public class Usuario {
         this.email = email;
         this.telefone = telefone;
         this.profissao = profissao;
-        this.comorbidades = mapComorbidades(comorbidades);
+        this.comorbidade = comorbidades;
         this.situacao = new Inabilitado(this);
+        this.dataPrimeiraDose = null;
     }
 
     public Integer getIdadeUsuario() throws ParseException {
@@ -97,24 +99,20 @@ public class Usuario {
         this.profissao = profissao;
     }
 
-    public List<String> mapComorbidades(String comorbidades) {
-        List<String> listaComorbidades = new ArrayList<String>();
-        for (String comorbidade : comorbidades.replaceAll(" ", "").split(",")) {
-            listaComorbidades.add(comorbidade);
-        }
-        return listaComorbidades;
+    public String getDataPrimeiraDose() {
+        return dataPrimeiraDose;
     }
-    
-    public String getComorbidades() {
-        String saida = "";
-        for (String string : this.comorbidades) {
-            saida += string + " ";
-        }
-        return saida;
+
+    public void setDataPrimeiraDose(String dataPrimeiraDose) {
+        this.dataPrimeiraDose = dataPrimeiraDose;
     }
-    
-    public void setComorbidades(List<String> comorbidades) {
-        this.comorbidades = comorbidades;
+
+    public String getComorbidade() {
+        return comorbidade;
+    }
+
+    public void setComorbidade(String comorbidade) {
+        this.comorbidade = comorbidade;
     }
 
     public String getDataNascimento() {
@@ -146,7 +144,7 @@ public class Usuario {
                 this.setTelefone(novoDado);
                 break;
             case "G":
-                this.setComorbidades(this.mapComorbidades(novoDado));
+                this.setComorbidade(novoDado);
                 break;
             case "H":
                 this.setDataNascimento(novoDado);
@@ -154,7 +152,19 @@ public class Usuario {
                 System.out.println("Opção inválida.");
         }
     }
-    
+    public String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade) throws ParseException {
+        return this.situacao.habilitarPrimeiraDose(idadeMinima, profissao, comorbidade);
+    };
+    public String tomarPrimeiraDose(String dataDose) {
+        return this.situacao.tomarPrimeiraDose(dataDose);
+    }
+    public String habilitarSegundaDose(String dataVerificacao) {
+        return this.situacao.habilitarSegundaDose(dataVerificacao);
+    }
+    public String tomarSegundaDose() {
+        return this.situacao.tomarSegundaDose();
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -175,14 +185,15 @@ public class Usuario {
         if (cpf == null) {
             if (other.cpf != null)
                 return false;
-        } else if (!cpf.equals(other.cpf))
+        } else if (!cpf.equals(other.cpf)) {
             return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return String.format("Nome: %s - CPF: %s - Telefone: %s - Endereço: %s - Email: %s - Número do Cartão do SUS: %s - Profissão: %s - Comorbidades: [%s]", this.nome, this.cpf, this.telefone, this.endereco, this.email, this.numeroCartaoSus, this.profissao, this.getComorbidades());
+        return String.format("Nome: %s - CPF: %s - Telefone: %s - Endereço: %s - Email: %s - Número do Cartão do SUS: %s - Profissão: %s - Comorbidade: %s  - Situação: %s", this.nome, this.cpf, this.telefone, this.endereco, this.email, this.numeroCartaoSus, this.profissao, this.getComorbidade(), this.getSituacao());
     }
 
     public Situacao getSituacao() {

@@ -23,7 +23,7 @@ public class HabilitadaSegundaDose extends Situacao{
     }
 
     @Override
-    public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
+    public String habilitarSegundaDose(String dataSegundaDose) {
         return Util.JA_HABILITADO_SEGUNDA_DOSE;
     }
 
@@ -31,6 +31,11 @@ public class HabilitadaSegundaDose extends Situacao{
     public String tomarSegundaDose() {
         usuario.setSituacao(new Finalizada(usuario));
         return "Usuário tomou a segunda dose da vacina.";
+    }
+
+    @Override
+    public String toString() {
+        return "Usuário encontra-se HABILITADO para SEGUNDA DOSE.";
     }
     
 }

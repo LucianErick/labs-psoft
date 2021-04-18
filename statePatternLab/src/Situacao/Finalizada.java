@@ -22,7 +22,7 @@ public class Finalizada extends Situacao {
     }
 
     @Override
-    public String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose) {
+    public String habilitarSegundaDose(String dataSegundaDose) {
         return this.toString();
     }
 

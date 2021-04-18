@@ -1,5 +1,7 @@
 package src.Util;
 
+import src.Classes.Vacinacao;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class Util {
     public static final String JA_TOMOU_SEGUNDA_DOSE = "Usuário já tomou a segunda dose.";
     public static final String NAO_HABILITADO_SEGUNDA_DOSE = "Usuário inabilitado para segunda dose.";
     public static final String HABILITADO_SEGUNDA_DOSE = "Usuário habilitado para segunda dose.";
+    public static final String ERRO_USUARIO_NAO_ENCONTRADO = "Usuário não encontrado.";
 
     public static List<String> mapStringParaLista(String stringQualquer) {
         List<String> listaString = new ArrayList<String>();

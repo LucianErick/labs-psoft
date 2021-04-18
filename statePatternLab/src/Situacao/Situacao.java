@@ -13,6 +13,6 @@ public abstract class Situacao {
 
     public abstract String habilitarPrimeiraDose(Integer idadeMinima, String profissao, String comorbidade) throws ParseException;
     public abstract String tomarPrimeiraDose(String dataDose);
-    public abstract String habilitarSegundaDose(String dataPrimeiraDose, String dataSegundaDose);
+    public abstract String habilitarSegundaDose(String dataSegundaDose);
     public abstract String tomarSegundaDose();
 }
