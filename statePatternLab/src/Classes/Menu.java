@@ -21,9 +21,9 @@ public class Menu {
         ControleVacinacao controleVacinacao = controleGeral.getControleVacinacao();
 
         Scanner input = new Scanner(System.in);
-        String menuInterativo = "\n(C)adastrar usuário\n" + "(L)istar usuários\n" + "(E)xibir dados usuário\n"
-                + "(A)lterar dados usuário\n" + "(R)egistrar parâmetros Vacinação\n"
-                + "(I)mprimir Lista de Vacinas\n" + "(H)abilitar Primeira Dose da vacina para usuário\n" + "(HA)bilitar Segunda dose para usuário\n" + "(M)inistrar Primeira Dose para usuário\n" + "(MI)nistrar Segunda Dose para usuário\n" + "(S)air\n" + "Opção> ";
+        String menuInterativo = "\n===========DIGITE A OPÇÃO==============\n"+ "(C)adastrar usuário\n" + "(L)istar usuários\n" + "(E)xibir dados usuário\n"
+                + "(A)lterar dados usuário\n" + "=======================================\n" + "(R)egistrar parâmetros Vacinação\n"
+                + "(I)mprimir Lista de Vacinas\n" + "=======================================\n"  + "(H)abilitar Primeira Dose da vacina para usuário\n" + "(M)inistrar Primeira Dose para usuário\n" + "(HA)bilitar Segunda dose para usuário\n" + "(MI)nistrar Segunda Dose para usuário\n" + "=======================================\n" + "(S)air\n" + "Opção> ";
 
         String opcao;
         do {
@@ -95,10 +95,10 @@ public class Menu {
                     System.out.print("\nDigite o numero do cartão do SUS: ");
                     String numeroCartaoSus = input.nextLine();
 
-                    System.out.print("\nDigite a profissão: ");
+                    System.out.print("\n|Caso não haja, digite 'nenhuma'|\nDigite a profissão: ");
                     String profissao = input.nextLine();
 
-                    System.out.print("\nDigite as comorbidades (separadas por vírgula): ");
+                    System.out.print("\n|Caso não haja, digite 'nenhuma'|\nDigite as comorbidades (separadas por vírgula): ");
                     String comorbidades = input.nextLine();
 
                     controleUsuario.cadastroUsuario(nome, cpf, dataNascimento, endereco, numeroCartaoSus, email, telefone,
@@ -132,12 +132,12 @@ public class Menu {
                     break;
 
                 case "R": // Registrar vacinação
-                    System.out.print("|não obrigatório|\nDigite a idade mínima exigida: ");
+                    System.out.print("|Caso não haja, digite 'nenhuma'|\nDigite a idade mínima exigida: ");
                     Integer idadeMinima = input.nextInt();
                     input.nextLine();
-                    System.out.print("\n|não obrigatório|\nDigite as profissões exigidas |separadas por ','|: ");
+                    System.out.print("\n|Caso não haja, digite 'nenhuma'|\nDigite as profissões exigidas |separadas por ','|: ");
                     String profissoesExigidas = input.nextLine();
-                    System.out.print("\n|não obrigatório|\nDigite as comorbidades exigidas |separadas por ','|: ");
+                    System.out.print("\n|Caso não haja, digite 'nenhuma'|\nDigite as comorbidades exigidas |separadas por ','|: ");
                     String comorbidadesExigidas = input.nextLine();
 
                     controleVacinacao.cadastrarVacina(idadeMinima, profissoesExigidas, comorbidadesExigidas);
@@ -146,7 +146,6 @@ public class Menu {
                 case "I":
                     System.out.println(controleVacinacao.listarVacinas());
                     break;
-
 
                 case "S":
                     System.out.println("Obrigado por utilizar o sistema.");
